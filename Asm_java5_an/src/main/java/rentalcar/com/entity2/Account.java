@@ -1,12 +1,17 @@
 package rentalcar.com.entity2;
 
-public class Account {
-
-}
+import java.util.Date;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name = "Accounts")
 public class Account {
     @Id
