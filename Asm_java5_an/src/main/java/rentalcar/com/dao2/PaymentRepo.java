@@ -9,8 +9,16 @@ import org.springframework.stereotype.Repository;
 
 import rentalcar.com.entity2.Payment;
 
-
 @Repository
-public interface PaymentRepo extends JpaRepository<Payment, Integer>{
+public interface PaymentRepo extends JpaRepository<Payment, Integer> {
+    // Tìm tất cả các thanh toán theo ID đơn hàng
+    @Query("SELECT p FROM Payments p WHERE p.PaymentID = :PaymentID")
+    List<Payment> findByPaymentID(@Param("PaymentID") Integer PaymentID);
 
+    // Tìm tất cả các thanh toán theo phương thức thanh toán
+    @Query("SELECT p FROM Payments p WHERE p.PaymentMethod = :PaymentMethod")
+    List<Payment> findByMethod(@Param("PaymentMethod") String PaymentMethod);
+
+    @Query("SELECT p FROM Payments")
+	List<Payment> findAllPayment();
 }

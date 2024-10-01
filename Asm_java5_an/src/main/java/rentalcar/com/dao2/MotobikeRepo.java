@@ -9,8 +9,16 @@ import org.springframework.stereotype.Repository;
 
 import rentalcar.com.entity2.Motorbike;
 
-
 @Repository
-public interface MotobikeRepo extends JpaRepository<Motorbike, Integer>{
+public interface MotobikeRepo extends JpaRepository<Motorbike, Integer> {
+    // Tìm tất cả các xe máy theo loại xe
+    @Query("SELECT m FROM Motorbikes m WHERE m.Model = :Model")
+    List<Motorbike> findByType(@Param("Model") String Model);
 
+    // Tìm tất cả các xe máy theo hãng xe
+    @Query("SELECT m FROM Motorbikes m WHERE m.brand = :brand")
+    List<Motorbike> findByBrand(@Param("brand") String brand);
+
+    @Query("SELECT m FROM Motorbikes")
+	List<Motorbike> findAllMotorbike();
 }

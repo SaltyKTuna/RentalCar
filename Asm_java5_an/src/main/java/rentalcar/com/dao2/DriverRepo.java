@@ -9,8 +9,16 @@ import org.springframework.stereotype.Repository;
 
 import rentalcar.com.entity2.Driver;
 
-
 @Repository
-public interface DriverRepo extends JpaRepository<Driver, Integer>{
+public interface DriverRepo extends JpaRepository<Driver, Integer> {
+    // Tìm tất cả các tài xế theo tên
+    @Query("SELECT d FROM Drivers d WHERE d.FullName LIKE :FullName")
+    List<Driver> findByFullName(@Param("FullName") String FullName);
 
+    // Tìm tất cả các tài xế theo số điện thoại
+    @Query("SELECT d FROM Drivers d WHERE d.phoneNumber = :phoneNumber")
+    List<Driver> findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
+
+    @Query("SELECT d FROM Drivers")
+	List<Driver> findAllDriver();
 }

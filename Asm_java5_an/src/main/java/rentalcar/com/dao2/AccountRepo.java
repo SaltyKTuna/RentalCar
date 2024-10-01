@@ -12,10 +12,12 @@ import rentalcar.com.entity2.Account;
 
 @Repository
 public interface AccountRepo extends JpaRepository<Account, Integer>{
-	@Query("SELECT a FROM Accounts a WHERE a.fullname LIKE :name")
-	List<Account> findByFullname(@Param("name") String fullname);
+	@Query("SELECT a FROM Accounts a WHERE a.fullname LIKE :fullname")
+	List<Account> findByFullname(@Param("fullname") String fullname);
+
 	@Query("SELECT a FROM Accounts a WHERE a.username LIKE :username")
 	List<Account> findByUsernameLike(@Param("username") String username);
 
-
+	@Query("SELECT a FROM Accounts")
+	List<Account> findAllAccounts();
 }
