@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import rentalcar.com.entity2.CarMaintenance;
 
 @Repository
-public interface CarMaintennaceRepo extends JpaRepository<CarMaintenance, Integer> {
+public interface CarMaintenanceRepo extends JpaRepository<CarMaintenance, Integer> {
     // Tìm tất cả các bảo dưỡng xe theo ID xe
     @Query("SELECT cm FROM CarMaintenances cm WHERE cm.carID = :carID")
     List<CarMaintenance> findByCarID(@Param("carID") Integer carID);
